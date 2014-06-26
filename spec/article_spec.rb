@@ -1,0 +1,10 @@
+require 'spec_helper'
+describe Article do
+  it "can have a name ,is under 220 characters and is public" do
+    article = Article.new
+    article.title = "Test"
+    article.title.should != nil
+    article.should be_public
+    article.status.length.should be <= 220
+  end
+end

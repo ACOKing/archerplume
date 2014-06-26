@@ -1,4 +1,6 @@
 Archerplume::Application.routes.draw do
+  
+
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -16,7 +18,9 @@ Archerplume::Application.routes.draw do
      resources :articles do
       resources  :comments
      end
-      
+      get   '/login', :to => 'sessions#new', :as => :login
+      get '/auth/:provider/callback', :to => 'sessions#create'
+get '/auth/failure', :to => 'sessions#failure'
       get 'articles/create'
   # Example resource route with options:
   #   resources :products do
